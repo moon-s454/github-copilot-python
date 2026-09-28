@@ -1,18 +1,45 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sudoku Game</title>
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-  <h1>Sudoku Game</h1>
-  <div id="sudoku-board"></div>
-  <div class="controls">
-    <button id="new-game">New Game</button>
-    <button id="check-solution">Check Solution</button>
-    <span id="message"></span>
-  </div>
+  <main class="app-shell">
+    <header class="app-header">
+      <h1>Sudoku Game</h1>
+    </header>
+
+    <div id="sudoku-board" aria-label="Sudoku board" role="grid"></div>
+
+    <div class="controls" aria-label="Sudoku controls">
+      <label for="difficulty-select">Difficulty:</label>
+      <select id="difficulty-select" aria-label="Choose difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium" selected>Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+
+      <button id="new-game" type="button">New Game</button>
+      <button id="check-solution" type="button">Check Solution</button>
+      <button id="hint" type="button">Hint</button>
+      <button id="theme-toggle" type="button" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">Dark mode</button>
+
+      <span id="timer-display" class="timer-display" aria-live="polite">00:00</span>
+      <span id="hints-used" aria-live="polite">Hints: 0</span>
+      <span id="message" role="status" aria-live="polite"></span>
+    </div>
+
+    <section class="leaderboard-panel" aria-labelledby="leaderboard-title">
+      <h2 id="leaderboard-title">Top 10 Leaderboard</h2>
+      <ol id="leaderboard-list" class="leaderboard-list"></ol>
+    </section>
+  </main>
+
+  <script src="/static/timer_utils.js"></script>
+  <script src="/static/leaderboard_utils.js"></script>
   <script src="/static/main.js"></script>
 </body>
 </html>
